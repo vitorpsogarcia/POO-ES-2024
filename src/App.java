@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class App {
     static Turma[] turmas = new Turma[10];
     static int quantidadeTurma = 0;
+    static int quantidadeEstudantes = 0;
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         int opcao = 0;
