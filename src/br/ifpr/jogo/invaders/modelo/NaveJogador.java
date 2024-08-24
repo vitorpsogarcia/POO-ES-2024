@@ -4,14 +4,8 @@ public class NaveJogador extends Entidade {
     private int pontuacao;
     private int quantidadeVidas;
 
-    // Construtor padrão
-    public NaveJogador() {
-        // geramos os atributos randomicamente
-        this(0, 0, 1);
-    }
-
     // Construtor personalizado - sobrecarregado
-    private NaveJogador(int x, int y, int velocidade) {
+    public NaveJogador(int x, int y, int velocidade) {
         super(x, y, velocidade);
     }
 
