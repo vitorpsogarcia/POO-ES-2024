@@ -1,3 +1,5 @@
+package br.ifpr.turma;
+
 import java.util.Scanner;
 
 public class App {
@@ -5,6 +7,7 @@ public class App {
     static int quantidadeTurma = 0;
     static int quantidadeEstudantes = 0;
     static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) throws Exception {
         int opcao = 0;
 
@@ -21,17 +24,17 @@ public class App {
                 cadastrarTurma();
                 break;
             case 2:
-                //fazer cadastro de campus
+                // fazer cadastro de campus
                 break;
             case 3:
-                //fazer cadastro de curso
+                // fazer cadastro de curso
                 break;
             case 4:
-                //fazer cadastro de estudante
+                // fazer cadastro de estudante
                 break;
             case 5:
-                //fazer cadastro de matricula
-                break;    
+                // fazer cadastro de matricula
+                break;
             case 6:
                 gerarRelatorio();
                 break;
@@ -45,14 +48,14 @@ public class App {
 
     public static void gerarRelatorio() {
         for (int i = 0; i < quantidadeTurma; i++) {
-            System.out.println("Nome turma: "+ turmas[i].nome);
-            System.out.println("Numero minimo: "+ turmas[i].numeroMinimo);
-            System.out.println("Ano de ingresso: "+ turmas[i].anoIngresso);
+            System.out.println("Nome turma: " + turmas[i].nome);
+            System.out.println("Numero minimo: " + turmas[i].numeroMinimo);
+            System.out.println("Ano de ingresso: " + turmas[i].anoIngresso);
         }
     }
 
     public static void cadastrarTurma() {
-        scanner.nextLine();//apaga o enter (\n)
+        scanner.nextLine();// apaga o enter (\n)
         Turma turma = new Turma();
         System.out.println("Digite o nome da turma: ");
         turma.nome = scanner.nextLine();
