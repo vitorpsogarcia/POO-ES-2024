@@ -6,7 +6,7 @@ import br.ifpr.jogo.invaders.modelo.NaveJogador;
 
 public class LogicaCriacao {
     private static final int VELOCIDADE_INICIAL_NAVE = 1;
-    private static final int QUANTIDADE_DE_COLUNAS = 10;
+    public static final int QUANTIDADE_DE_COLUNAS = 10;
     private static final int QUANTIDADE_DE_LINHAS = 10;
 
     public static Entidade[][] criaMatriz() {
