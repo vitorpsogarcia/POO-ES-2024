@@ -1,5 +1,7 @@
 package br.ifpr.jogo.invaders.modelo;
 
+import br.ifpr.jogo.invaders.logica.LogicaCriacao;
+
 public class NaveJogador extends Entidade {
     private int pontuacao;
     private int quantidadeVidas;
@@ -27,16 +29,41 @@ public class NaveJogador extends Entidade {
     }
 
     // métodos
-    public void movimentarParaEsquerda() {
+    public Projetil movimentarParaEsquerda() {
+        int x = this.getX();
+        x -= this.getVelocidade();
 
+        if (x < 0) {
+            x = 0;
+        } else if (x > LogicaCriacao.getQuantidadeDeColunas() - 1) {
+            x = LogicaCriacao.getQuantidadeDeColunas() - 1;
+        }
+
+        Projetil projetil = this.atirar();
+        this.setX(x);
+
+        return projetil;
     }
 
-    public void movimentarParaDireita() {
+    public Projetil movimentarParaDireita() {
+        int x = this.getX();
+        x += this.getVelocidade();
 
+        if (x < 0) {
+            x = 0;
+        } else if (x > LogicaCriacao.getQuantidadeDeColunas() - 1) {
+            x = LogicaCriacao.getQuantidadeDeColunas() - 1;
+        }
+
+        Projetil projetil = this.atirar();
+        this.setX(x);
+
+        return projetil;
     }
 
-    public void atirar() {
-
+    public Projetil atirar() {
+        Projetil projetil = new Projetil(this.getX(), this.getY() - 1, 1, true);
+        return projetil;
     }
 
 }

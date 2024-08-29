@@ -3,9 +3,9 @@ package br.ifpr.jogo.invaders.modelo;
 public class Projetil extends Entidade {
     private boolean direcao; // true : cima / false : baixo
 
-    public Projetil(int direcao) {
-        // geramos os atributos randomicamente
-        this(0, 0, 1);
+    public Projetil(int x, int y, int velocidade, boolean direcao) {
+        this(x, y, velocidade);
+        this.direcao = direcao;
     }
 
     private Projetil(int x, int y, int velocidade) {
@@ -21,6 +21,14 @@ public class Projetil extends Entidade {
     }
 
     public void movimentarParaBaixoOuParaCima() {
-
+        if (direcao) {
+            this.setY(
+                this.getY() - this.getVelocidade()
+            );
+        } else {
+            this.setY(
+                this.getY() + this.getVelocidade()
+            );
+        }
     }
 }

@@ -23,4 +23,8 @@ public class Inimigo extends Entidade {
     public void movimentarParaBaixo() {
         // TODO: pensar como fazer a lógica
     }
+
+    @Override protected void finalize() throws Throwable {
+        System.out.println("Inimigo foi destruído");
+    }
 }
