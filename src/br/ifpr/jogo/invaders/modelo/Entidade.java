@@ -36,4 +36,6 @@ public class Entidade {
     public void setVelocidade(int velocidade) {
         this.velocidade = velocidade;
     }
+
+    public void atualizarPosicao(){};
 }

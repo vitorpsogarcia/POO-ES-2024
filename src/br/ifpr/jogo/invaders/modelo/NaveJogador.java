@@ -1,14 +1,16 @@
 package br.ifpr.jogo.invaders.modelo;
 
-import br.ifpr.jogo.invaders.logica.LogicaCriacao;
+import br.ifpr.jogo.invaders.logica.Controlador;
 
 public class NaveJogador extends Entidade {
     private int pontuacao;
     private int quantidadeVidas;
+    private int ladoMovimentacao = 0;
 
     // Construtor personalizado - sobrecarregado
     public NaveJogador(int x, int y, int velocidade) {
         super(x, y, velocidade);
+        this.pontuacao = 0;
     }
 
     // getters e setters
@@ -28,42 +30,42 @@ public class NaveJogador extends Entidade {
         this.quantidadeVidas = quantidadeVidas;
     }
 
+    public int getLadoMovimentacao() {
+        return ladoMovimentacao;
+    }
+
+    public void setLadoMovimentacao(int ladoMovimentacao) {
+        this.ladoMovimentacao = ladoMovimentacao;
+    }
+
     // métodos
-    public Projetil movimentarParaEsquerda() {
+    public void movimentar(int direcao) {
         int x = this.getX();
-        x -= this.getVelocidade();
+        x += this.getVelocidade() * direcao;
 
-        if (x < 0) {
+        if (x <= 0) {
             x = 0;
-        } else if (x > LogicaCriacao.getQuantidadeDeColunas() - 1) {
-            x = LogicaCriacao.getQuantidadeDeColunas() - 1;
+        } else if (x >= Controlador.getQuantidadeDeColunas() - 1) {
+            x = Controlador.getQuantidadeDeColunas() - 1;
         }
 
-        Projetil projetil = this.atirar();
+        this.atirar();
         this.setX(x);
-
-        return projetil;
     }
 
-    public Projetil movimentarParaDireita() {
-        int x = this.getX();
-        x += this.getVelocidade();
-
-        if (x < 0) {
-            x = 0;
-        } else if (x > LogicaCriacao.getQuantidadeDeColunas() - 1) {
-            x = LogicaCriacao.getQuantidadeDeColunas() - 1;
-        }
-
-        Projetil projetil = this.atirar();
-        this.setX(x);
-
-        return projetil;
+    public void atirar() {
+        Controlador.criaProjetil(
+            this.getX(),
+            this.getY(),
+            1,
+            true,
+            true
+        );
     }
 
-    public Projetil atirar() {
-        Projetil projetil = new Projetil(this.getX(), this.getY() - 1, 1, true);
-        return projetil;
+    public void atualizarPosicao() {
+        this.movimentar(ladoMovimentacao);
+        this.ladoMovimentacao = 0;
     }
 
 }
