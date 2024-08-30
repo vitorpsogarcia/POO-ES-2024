@@ -2,10 +2,13 @@ package br.ifpr.jogo.invaders.modelo;
 
 public class Inimigo extends Entidade {
     private int pontos;
+    private int contadorAndar = 0;
+    private int andarQuando;
 
-    public Inimigo() {
-        // geramos os atributos randomicamente
-        this(0, 0, 1);
+    public Inimigo(int posX, int posY, int velocidade, int pontos, int andarQuando) {
+        this(posX, posY, velocidade);
+        this.pontos = pontos;
+        this.andarQuando = andarQuando;
     }
 
     private Inimigo(int x, int y, int velocidade) {
@@ -16,15 +19,16 @@ public class Inimigo extends Entidade {
         return pontos;
     }
 
-    public void setPontos(int pontos) {
-        this.pontos = pontos;
+    public void atualizarPosicao() {
+        if (contadorAndar == andarQuando) {
+            this.setY(this.getY() + 1);
+            contadorAndar = 0;
+        } else {
+            contadorAndar++;
+        }
     }
 
-    public void movimentarParaBaixo() {
-        // TODO: pensar como fazer a lógica
-    }
-
-    @Override protected void finalize() throws Throwable {
-        System.out.println("Inimigo foi destruído");
+    public boolean vaiMover() {
+        return contadorAndar == andarQuando;
     }
 }

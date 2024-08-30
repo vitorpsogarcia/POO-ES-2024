@@ -8,9 +8,10 @@ public class NaveJogador extends Entidade {
     private int ladoMovimentacao = 0;
 
     // Construtor personalizado - sobrecarregado
-    public NaveJogador(int x, int y, int velocidade) {
+    public NaveJogador(int x, int y, int velocidade, int quantidadeVidas) {
         super(x, y, velocidade);
         this.pontuacao = 0;
+        this.quantidadeVidas = quantidadeVidas;
     }
 
     // getters e setters

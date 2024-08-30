@@ -2,12 +2,12 @@ package br.ifpr.jogo.invaders.modelo;
 
 public class Projetil extends Entidade {
     private boolean direcao; // true : cima / false : baixo
-    private boolean aliado;
+    private boolean doJogador;
 
     public Projetil(int x, int y, int velocidade, boolean direcao, boolean aliado) {
         this(x, y, velocidade);
         this.direcao = direcao;
-        this.aliado = aliado;
+        this.doJogador = aliado;
     }
 
     private Projetil(int x, int y, int velocidade) {
@@ -22,8 +22,8 @@ public class Projetil extends Entidade {
         this.direcao = direcao;
     }
 
-    public boolean isAliado() {
-        return aliado;
+    public boolean isDoJogador() {
+        return doJogador;
     }
 
     public void atualizarPosicao() {
